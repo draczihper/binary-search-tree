@@ -20,3 +20,14 @@ function buildTree(array) {
 }
 
 
+function removeDuplicates(sortedArray) {
+    let newArray = []
+    for (let i = 0; i < sortedArray.length; i++){
+        if (sortedArray[i] !== sortedArray[i - 1]) {
+            newArray.push(sortedArray[i])
+        }
+    }
+
+    return newArray;
+}
+

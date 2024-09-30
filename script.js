@@ -15,7 +15,8 @@ class Tree {
 
 function buildTree(array) {
     const sortedArray = array.sort((a, b) => a - b);
-    const newArray = []
+    const newArray = removeDuplicates(sortedArray);
+
 
 }
 

@@ -14,10 +14,11 @@ class Tree {
 }
 
 function buildTree(array) {
-    
+    const sortedArray = sortArray(array);
     const newArray = removeDuplicates(sortedArray);
 
     const tree = new Tree(newArray);
+    tree.root 
 
     
 }

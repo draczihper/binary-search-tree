@@ -14,12 +14,18 @@ class Tree {
 }
 
 function buildTree(array) {
-    const sortedArray = array.sort((a, b) => a - b);
+    
     const newArray = removeDuplicates(sortedArray);
 
+    const tree = new Tree(newArray);
 
+    
 }
 
+function sortArray(array) {
+    const sortedArray = array.sort((a, b) => a - b);
+    return sortedArray;
+}
 
 function removeDuplicates(sortedArray) {
     let newArray = []

@@ -22,13 +22,13 @@ class Tree {
     }
 
     buildTree(array) { 
+        if (array.length === 0) return null;
+
         let mid = Math.floor(newArray.length / 2);
-        let root = new Node(newArray[mid]);
+        const root = new Node(newArray[mid]);
     
-       
-    
-        root.left = buildTree(leftArr)
-        root.right = buildTree(rightArr)
+        root.left = this.buildTree(array.slice(0, mid))
+        root.right = this.buildTree(array.slice(mid+1))
       
         return root;
     }

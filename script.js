@@ -9,18 +9,31 @@ class Node {
 class Tree {
     constructor(array) {
         this.array = array;
-        this.root = buildTree();
+        this.root = buildTree(this.array);
     }
 }
 
 function buildTree(array) {
+    if (start > end) return null;
     const sortedArray = sortArray(array);
     const newArray = removeDuplicates(sortedArray);
 
-    const tree = new Tree(newArray);
-    tree.root 
 
     
+    let mid = Math.floor(start + end) / 2;
+    let root = new Node(newArray[mid]);
+
+    leftArr = newArray.splice(0, mid - 1);
+    rightArr = newArray.splice(mid + 1, newArray.length - 1)
+
+    root.left = buildTree(leftArr)
+    root.right = buildTree(rightArr)
+
+
+
+    
+
+    return root;
 }
 
 function sortArray(array) {

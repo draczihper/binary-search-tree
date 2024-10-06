@@ -8,47 +8,36 @@ class Node {
 
 class Tree {
     constructor(array) {
-        this.array = array;
-        this.root = buildTree(this.array);
+        const sortedArray = this.sortArray(array)
+        const newArray = this.removeDuplicates(array)
+        this.root = this.buildTree(this.array);
+    }
+
+    sortArray(array) {
+        return array.sort((a, b) => a - b);
+}
+    
+    removeDuplicates(sortedArray) {
+        return [...new Set(sortedArray)]
+    }
+
+    buildTree(array) { 
+        let mid = Math.floor(newArray.length / 2);
+        let root = new Node(newArray[mid]);
+    
+       
+    
+        root.left = buildTree(leftArr)
+        root.right = buildTree(rightArr)
+      
+        return root;
     }
 }
 
-function buildTree(array) {
-    if (start > end) return null;
-    const sortedArray = sortArray(array);
-    const newArray = removeDuplicates(sortedArray);
-
-
-    
-    let mid = Math.floor(start + end) / 2;
-    let root = new Node(newArray[mid]);
-
-    leftArr = newArray.splice(0, mid - 1);
-    rightArr = newArray.splice(mid + 1, newArray.length - 1)
-
-    root.left = buildTree(leftArr)
-    root.right = buildTree(rightArr)
 
 
 
-    
 
-    return root;
-}
 
-function sortArray(array) {
-    const sortedArray = array.sort((a, b) => a - b);
-    return sortedArray;
-}
 
-function removeDuplicates(sortedArray) {
-    let newArray = []
-    for (let i = 0; i < sortedArray.length; i++){
-        if (sortedArray[i] !== sortedArray[i - 1]) {
-            newArray.push(sortedArray[i])
-        }
-    }
-
-    return newArray;
-}
-
+const tree = new Tree([1, 7, 4, 23, 8, 9, 4, 3, 5, 7, 9, 67, 6345, 324])

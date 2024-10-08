@@ -57,7 +57,25 @@ class Tree {
             node.right = this.insert(value, node.right)
         }
         return node;
-        
+    }
+
+    deleteItem(value, node = this.root) {
+        if (node === null) {
+            return null;
+        }
+        if (value < node.data) {
+            node.left = this.deleteItem(value, node.left)
+        } else if (value > node.data) {
+            node.right = this.insert(value, node.right)
+        } else {
+            if (node.left === null) {
+                return node.right;
+            }
+
+            if (node.right === null) {
+                return node.left;
+            }
+        }
     }
 }
 

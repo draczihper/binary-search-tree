@@ -70,13 +70,20 @@ class Tree {
         } else {
             if (node.left === null) {
                 return node.right;
-            }
-
-            if (node.right === null) {
+            }else if (node.right === null) {
                 return node.left;
             }
+
+            node.data = this.minValue(node.right)
+            node.right = this.deleteItem(node.data, node.right)
         }
+        return node;
     }
+
+
+
+
+    
 }
 
 

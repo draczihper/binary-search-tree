@@ -80,10 +80,15 @@ class Tree {
         return node;
     }
 
+    minValue(node) {
+        let current = node;
+        while (current.left !== null) {
+            current = current.left
+        }
+    }
 
 
 
-    
 }
 
 

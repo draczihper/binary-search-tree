@@ -44,7 +44,21 @@ class Tree {
         if (node.left !== null) {
           this.prettyPrint(node.left, `${prefix}${isLeft ? "    " : "│   "}`, true);
         }
-      };
+      }
+
+    insert(value, node = this.root) {
+        if (node === null) {
+            return new Node(value);
+        }
+
+        if (value < node.data) {
+            node.left = this.insert(value, node.left)
+        } else if(value > node.data) {
+            node.right = this.insert(value, node.right)
+        }
+        return node;
+        
+    }
 }
 
 

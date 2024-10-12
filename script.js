@@ -88,10 +88,22 @@ class Tree {
         return current.data;
     }
 
-    
+    find(value, node = this.root) {
+        if (node == null || node.data == value) {
+            return node;
+        }
+
+        if (value > node.data) {
+            return this.find(value, node.right)
+        }
+
+        return this.find(value, node.left);
+    }
 
 }
 
 
 const tree = new Tree([1, 7, 4, 23, 8, 9, 4, 3, 5, 7, 9, 67, 6345, 324]);
 tree.prettyPrint()
+
+console.log(tree.find(67))

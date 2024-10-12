@@ -66,7 +66,7 @@ class Tree {
         if (value < node.data) {
             node.left = this.deleteItem(value, node.left)
         } else if (value > node.data) {
-            node.right = this.insert(value, node.right)
+            node.right = this.deleteItem(value, node.right)
         } else {
             if (node.left === null) {
                 return node.right;
@@ -85,9 +85,10 @@ class Tree {
         while (current.left !== null) {
             current = current.left
         }
+        return current.data;
     }
 
-
+    
 
 }
 

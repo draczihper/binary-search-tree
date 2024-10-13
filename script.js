@@ -100,12 +100,25 @@ class Tree {
         return this.find(value, node.left);
     }
 
-    levelOrder(buildTree) {
+    levelOrder(root) {
         if (root === null) return;
 
         const queue = [];
 
         queue.push(root);
+
+        while (queue.length > 0) {
+            const node = queue.shift()
+            console.log(node.data)
+
+            if (node.left !== null) {
+                queue.push(node.left)
+            }
+
+            if (node.right !== null) {
+                queue.push(node.right);
+            }
+        }
     }
 
 }

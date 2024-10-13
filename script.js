@@ -89,7 +89,7 @@ class Tree {
     }
 
     find(value, node = this.root) {
-        if (node == null || node.data == value) {
+        if (node == null || node.data == value) { // Base case
             return node;
         }
 
@@ -100,10 +100,15 @@ class Tree {
         return this.find(value, node.left);
     }
 
+    levelOrder(root) {
+        if (root === null) return;
+    }
+
 }
 
 
 const tree = new Tree([1, 7, 4, 23, 8, 9, 4, 3, 5, 7, 9, 67, 6345, 324]);
+tree.insert(2)
 tree.prettyPrint()
 
-console.log(tree.find(67))
+console.log(tree.find(67) !== null ? "found" : "not found")

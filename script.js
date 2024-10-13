@@ -100,16 +100,20 @@ class Tree {
         return this.find(value, node.left);
     }
 
-    levelOrder(root) {
+    levelOrderIterative(callback) {
+        if (typeof callback !== 'function') {
+            throw new Error("A callback function is required for levelOrder traversal!")
+        }
+        
         if (root === null) return;
 
-        const queue = [];
+        const queue = [this.root];
 
         queue.push(root);
 
         while (queue.length > 0) {
             const node = queue.shift()
-            console.log(node.data)
+            callback(node);
 
             if (node.left !== null) {
                 queue.push(node.left)

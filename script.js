@@ -153,6 +153,21 @@ class Tree {
         traverseLevel([this.root])
     }
 
+    inOrder(callback) {
+        if (typeof callback !== 'function') {
+            throw new Error("A callback is required for inOrder traversal")
+        }
+
+        const traverse = (node) => {
+            if (node === null) return;
+            traverse(node.left);
+            callback(node)
+            traverse(node.right);
+        }
+
+        traverse(this.root)
+    }
+
 
 }
 

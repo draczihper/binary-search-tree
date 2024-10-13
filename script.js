@@ -104,12 +104,12 @@ class Tree {
         if (typeof callback !== 'function') {
             throw new Error("A callback function is required for levelOrder traversal!")
         }
-        
-        if (root === null) return;
+
+        if (this.root === null) return;
 
         const queue = [this.root];
 
-        queue.push(root);
+        queue.push(this.root);
 
         while (queue.length > 0) {
             const node = queue.shift()
@@ -125,11 +125,35 @@ class Tree {
         }
     }
 
+    levelOrderRecursive(callback) {
+        if (typeof callback !== 'function'){
+            throw new Error("A callback is required for levelOrder traversal!")
+        }
+        
+        const traverseLevel = (level) => {
+            if (level.length === 0) return;
+
+            const nextLevel = [];
+
+            level.forEach(node => {
+                callback(node);
+                if (node.left !== null) {
+                    nextLevel.push(node.left)
+                }
+
+                if (node.right !== null) {
+                    nextLevel.push(node.right);
+                }
+                
+            });
+
+            traverseLevel(nextLevel);
+        };
+
+        traverseLevel([this.root])
+    }
+
+
 }
 
-
-const tree = new Tree([1, 7, 4, 23, 8, 9, 4, 3, 5, 7, 9, 67, 6345, 324]);
-tree.insert(2)
-tree.prettyPrint()
-
-console.log(tree.find(67) !== null ? "found" : "not found")
+module.exports = Tree;

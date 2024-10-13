@@ -183,7 +183,22 @@ class Tree {
         traverse(this.root)
     }
 
+    postOrder(callback) {
+        if (typeof callback !== 'function') {
+            throw new Error("A callback is required for postOrder traversal")
+        }
 
+        const traverse = (node) => {
+            if (node === null) return;
+            traverse(node.left);
+            traverse(node.right);
+            callback(node)
+        }
+
+        traverse(this.root)
+    }
+
+   
 }
 
 module.exports = Tree;

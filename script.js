@@ -168,6 +168,21 @@ class Tree {
         traverse(this.root)
     }
 
+    preOrder(callback) {
+        if (typeof callback !== 'function') {
+            throw new Error("A callback is required for preOrder traversal")
+        }
+
+        const traverse = (node) => {
+            if (node === null) return;
+            callback(node)
+            traverse(node.left);
+            traverse(node.right);
+        }
+
+        traverse(this.root)
+    }
+
 
 }
 

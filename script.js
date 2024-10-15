@@ -208,6 +208,27 @@ class Tree {
 
         return Math.max(leftHeight, rightHeight) + 1;
     }
+    
+   depth(node) {
+        if (node === null) return -1;
+
+        let depth = 0;
+        let current = this.root
+        
+        while (current !== null) {
+            if (node.data === current.data) {
+                return depth;
+            } else if (node.data < current.data) {
+                current = current.left;
+            } else {
+                current = current.right;
+            }
+            depth++;
+        }
+        return -1;
+    }
+
+   
 
  
 }

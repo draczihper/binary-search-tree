@@ -228,9 +228,24 @@ class Tree {
         return -1;
     }
 
-   
+    isBalanced(node = this.root) {
+        const checkBalance = (node) => {
+            if (node === null) return [true, -1]; 
 
- 
+            const [leftBalanced, leftHeight] = checkBalance(node.left);
+            const [rightBalanced, rightHeight] = checkBalance(node.right);
+
+            const balanced = leftBalanced && rightBalanced && 
+                             Math.abs(leftHeight - rightHeight) <= 1;
+            const height = Math.max(leftHeight, rightHeight) + 1;
+
+            return [balanced, height];
+        };
+
+        return checkBalance(node)[0];
+    }
+
+   
 }
 
 module.exports = Tree;

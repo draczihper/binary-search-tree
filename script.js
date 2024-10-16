@@ -245,7 +245,13 @@ class Tree {
         return checkBalance(node)[0];
     }
 
-   
+    rebalance() {
+        const nodes = [];
+        this.inOrder(node => nodes.push(node.data));
+        this.root = this.buildTree(nodes)
+    }
+
+ 
 }
 
 module.exports = Tree;
